@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://github.com/pensando/pypi/blob/main/docs/PSMAPI.md (V1 API classes) +
+  generated client versions
+api: AMD Pensando Policy and Services Manager (PSM) REST API
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: >-
+    API surfaces are versioned V1 in class/path names (ClusterV1Api, NetworkV1Api,
+    SecurityV1Api, ...). Client distributions track PSM releases independently:
+    pensando-cloud 1.16.3, pensando-dss 1.62.2, pensando-ent 1.28.1.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  detail: No public deprecation policy or RFC 8594 Sunset/Deprecation header support is documented.
+sla:
+  url: null
+  detail: >-
+    PSM is customer-operated appliance software; availability is governed by the
+    customer's own deployment, not a hosted-service SLA.
+status_page: null
+status_page_detail: >-
+  No hosted status page — PSM runs on-premises/per-appliance. Cluster health is
+  observed via ClusterV1Api and MonitoringV1Api rather than a public status page.
+notes: >-
+  Because PSM is deployed per-customer rather than as a multi-tenant hosted API,
+  there is no public status page, hosted SLA, or deprecation-policy page to
+  capture. Versioning (V1) is confirmed from the first-party generated client and
+  PSM API guide. No StatusPage or Deprecation pointer is emitted (nothing published).

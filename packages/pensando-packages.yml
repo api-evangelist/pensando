@@ -1,0 +1,49 @@
+generated: '2026-07-20'
+method: searched
+source: PyPI (pypi.org/pypi/<pkg>/json) + github.com/pensando/pypi README
+description: >-
+  Official first-party Python language bindings for the AMD Pensando Policy and
+  Services Manager (PSM) REST API, auto-generated from the PSM Swagger spec and
+  published to PyPI. One distribution per PSM product line (Cloud, Distributed
+  Services Switch, Enterprise). Sources live in github.com/pensando/pypi.
+packages:
+- name: pensando-cloud
+  registry: pypi
+  official: true
+  language: python
+  version: 1.16.3
+  summary: Python language bindings for AMD Pensando PSM (Cloud distribution)
+  url: https://pypi.org/project/pensando-cloud/
+  source: https://github.com/pensando/pypi
+  install: pip install pensando-cloud
+- name: pensando-dss
+  registry: pypi
+  official: true
+  language: python
+  version: 1.62.2
+  summary: Python language bindings for AMD Pensando PSM (Distributed Services Switch distribution)
+  url: https://pypi.org/project/pensando-dss/
+  source: https://github.com/pensando/pypi
+  install: pip install pensando-dss
+- name: pensando-ent
+  registry: pypi
+  official: true
+  language: python
+  version: 1.28.1
+  summary: Python language bindings for AMD Pensando PSM (Enterprise distribution)
+  url: https://pypi.org/project/pensando-ent/
+  source: https://github.com/pensando/pypi
+  install: pip install pensando-ent
+- name: terraform-pensando
+  registry: github
+  official: true
+  language: hcl
+  summary: First-party Terraform provider for Pensando PSM (last updated 2020)
+  url: https://github.com/pensando/terraform-pensando
+  source: https://github.com/pensando/terraform-pensando
+notes: >-
+  The bindings are auto-generated from the PSM Swagger schema, which is served
+  only from a running PSM appliance at https://<PSM-IP>/generated/swaggeruri.html
+  (and interactive docs at https://<PSM-IP>/docs) — there is no publicly hosted
+  OpenAPI/Swagger document to capture. A first-party Terraform provider also
+  exists at github.com/pensando/terraform-pensando (last updated 2020).

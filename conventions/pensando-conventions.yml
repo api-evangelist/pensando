@@ -1,0 +1,58 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://github.com/pensando/pypi/blob/main/docs/PSMAPI.md +
+  github.com/pensando/pypi generated Python client (configuration module)
+api: AMD Pensando Policy and Services Manager (PSM) REST API
+summary: >-
+  Cross-cutting request/response semantics for the PSM REST API, captured from the
+  first-party PSM API guide and generated client. PSM is a Kubernetes-style
+  declarative configuration API served per-appliance.
+authentication:
+  style: token
+  detail: >-
+    Log in with username/password (PSM_USER / PSM_PASSWORD env vars or interactive
+    Configuration()); PSM returns a login token stored in ~/.psm/config.json along
+    with the PSM endpoint. The token is sent on subsequent API calls and is valid
+    for six days without refresh. TLS verification (verify_ssl) is configurable
+    because appliances often use self-signed certificates.
+  ref: authentication/pensando-authentication.yml
+object_model:
+  style: declarative-kubernetes-like
+  envelope: [kind, api-version, meta, spec, status]
+  detail: >-
+    Every configuration object is described by Kind + ApiVersion, a Meta block
+    (name, tenant, namespace, labels, uuid, resource-version, timestamps), a Spec
+    (desired state) and a Status (observed state). Clients set Spec and read Status.
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: >-
+    API classes and paths are versioned V1 (e.g. ClusterV1Api, NetworkV1Api). No
+    dated or header-based versioning is documented.
+  ref: lifecycle/pensando-lifecycle.yml
+concurrency:
+  style: optimistic
+  field: meta.resource-version
+  detail: >-
+    Updates carry the object's resource-version; a stale version is rejected with
+    HTTP 412 Precondition Failed. This provides safe read-modify-write semantics
+    but is NOT a client-supplied idempotency-key contract.
+error_handling:
+  detail: >-
+    Check the HTTPS status code first, then parse the JSON body for detail. Plain
+    JSON error bodies (not RFC 9457).
+  ref: errors/pensando-problem-types.yml
+pagination:
+  documented: false
+  detail: No pagination scheme is documented in the PSM API guide.
+tenancy:
+  detail: Objects are scoped by tenant and namespace via the Meta block; RBAC governs access (AuthV1Api roles/role-bindings).
+rate_limiting:
+  documented: false
+notes: >-
+  PSM does not document a client-supplied idempotency key; write safety comes from
+  declarative apply + resource-version optimistic concurrency, so no Idempotency
+  pointer is emitted. Semantics are sourced from the first-party API guide and
+  generated client; the authoritative live docs are served from a running PSM
+  appliance at https://<PSM-IP>/docs.

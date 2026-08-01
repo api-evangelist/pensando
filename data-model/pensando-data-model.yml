@@ -1,0 +1,115 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  github.com/pensando/pypi generated client model docs (src_cloud/pensando_cloud/docs/*Spec.md)
+  + docs/PSMAPI.md object model
+api: AMD Pensando Policy and Services Manager (PSM) REST API
+summary: >-
+  Entity-relationship view of the PSM configuration API, derived from the 67
+  first-party generated Python client model specs (Cloud distribution). PSM
+  follows a Kubernetes-style declarative object model: every configuration object
+  carries Kind, ApiVersion, Meta (name/namespace/tenant/labels/UUID/
+  resource-version), Spec (desired state) and Status (observed state). Objects are
+  grouped into V1 API domains (ClusterV1Api, NetworkV1Api, SecurityV1Api, ...).
+object_envelope:
+  fields: [kind, api-version, meta, spec, status]
+  meta_fields: [name, tenant, namespace, labels, self-link, uuid, resource-version, creation-time, mod-time]
+  notes: >-
+    resource-version drives optimistic concurrency on updates (a stale version
+    yields HTTP 412 Precondition Failed). tenant/namespace scope most objects.
+domains:
+  - name: cluster
+    api: ClusterV1Api
+    entity_count: 10
+    entities: [Cluster, Node, DistributedServiceCard, DSCProfile, Host, Tenant, License, Credentials, ConfigurationSnapshot, SnapshotRestore]
+  - name: network
+    api: NetworkV1Api
+    entity_count: 15
+    entities: [Network, VirtualRouter, IPAMPolicy, RoutingConfig, RouteTable, HealthCheck, LoadbalancerPolicy]
+  - name: security
+    api: SecurityV1Api
+    entity_count: 8
+    entities: [SecurityGroup, NetworkSecurityPolicy, App, Certificate, TrafficEncryptionPolicy, FirewallProfile]
+  - name: auth
+    api: AuthV1Api
+    entity_count: 5
+    entities: [User, Role, RoleBinding, AuthenticationPolicy, UserPreference]
+  - name: monitoring
+    api: MonitoringV1Api
+    entity_count: 12
+    entities: [Alert, AlertPolicy, AlertDestination, EventPolicy, AuditPolicy, FlowExportPolicy, FwlogPolicy, MirrorSession, StatsAlertPolicy, ArchiveRequest, TechSupportRequest, TroubleshootingSession]
+  - name: workload
+    api: WorkloadV1Api
+    entity_count: 3
+    entities: [Workload, Endpoint]
+  - name: orchestration
+    api: OrchestrationV1Api
+    entity_count: 3
+    entities: [Orchestrator]
+  - name: telemetry
+    api: TelemetryV1Api
+    entity_count: 2
+    entities: [MetricsQuery, FwlogQuery]
+  - name: staging
+    api: StagingV1Api
+    entity_count: 2
+    entities: [Buffer, CommitAction]
+  - name: objstore
+    api: ObjstoreV1Api
+    entity_count: 2
+    entities: [Object, Bucket]
+  - name: rollout
+    api: RolloutV1Api
+    entity_count: 1
+    entities: [Rollout]
+  - name: diagnostics
+    api: DiagnosticsV1Api
+    entity_count: 1
+    entities: [Module]
+  - name: bulkedit
+    api: BulkeditV1Api
+    entity_count: 1
+    entities: [BulkEditAction]
+relationships:
+  - from: Cluster
+    to: Node
+    kind: has_many
+    via: nodes
+  - from: Cluster
+    to: DistributedServiceCard
+    kind: has_many
+    via: dsc
+  - from: DistributedServiceCard
+    to: DSCProfile
+    kind: belongs_to
+    via: dsc-profile
+  - from: Host
+    to: DistributedServiceCard
+    kind: has_many
+    via: dscs
+  - from: Workload
+    to: Endpoint
+    kind: has_many
+    via: endpoints
+  - from: NetworkSecurityPolicy
+    to: SecurityGroup
+    kind: references
+    via: attach-groups
+  - from: Network
+    to: VirtualRouter
+    kind: belongs_to
+    via: virtual-router
+  - from: RoleBinding
+    to: Role
+    kind: belongs_to
+    via: roles
+  - from: RoleBinding
+    to: User
+    kind: references
+    via: users
+notes: >-
+  Relationships are derived from the K8s-style object references in the generated
+  client model specs and the PSM object model; exact JSON field names may vary by
+  PSM version. No public OpenAPI/Swagger document is hosted (the schema is served
+  only from a running PSM appliance at https://<PSM-IP>/generated/swaggeruri.html),
+  so this graph is derived from the first-party generated client rather than a spec.

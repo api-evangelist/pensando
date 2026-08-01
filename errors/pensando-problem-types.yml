@@ -1,0 +1,44 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/pensando/pypi/blob/main/docs/PSMAPI.md
+api: AMD Pensando Policy and Services Manager (PSM) REST API
+format: json
+envelope: >-
+  PSM returns a standard HTTPS status code plus a JSON body. Best practice per the
+  PSM API guide: check the HTTPS response code first, then parse the JSON payload
+  for details. Errors are NOT RFC 9457 application/problem+json; the body is a
+  plain JSON object with the failure detail.
+problems:
+  - status: 400
+    title: Bad Request
+    meaning: Malformed request body or invalid object spec.
+    remediation: Validate the object against the model schema (Kind/Spec fields) before submitting.
+  - status: 401
+    title: Unauthorized
+    meaning: Missing, invalid, or expired PSM login token. Tokens are valid for six days; deleting a user or changing RBAC privileges immediately invalidates existing tokens.
+    remediation: Re-authenticate (Configuration login) to obtain a fresh token in ~/.psm/config.json.
+  - status: 409
+    title: Conflict
+    meaning: Object already exists on create, or a concurrent-modification conflict.
+    remediation: Fetch the current object and reconcile before retrying.
+  - status: 412
+    title: Precondition Failed
+    meaning: resource-version mismatch — the object was modified since it was read (optimistic concurrency).
+    remediation: Re-read the object to get the current meta.resource-version, then re-apply the update.
+  - status: 500
+    title: Internal Server Error
+    meaning: Unexpected server-side failure in PSM.
+    remediation: Retry with backoff; collect a tech-support bundle if persistent.
+  - status: 501
+    title: Not Implemented
+    meaning: Operation not supported by this PSM version/distribution.
+    remediation: Confirm the operation is available in your PSM product line (Cloud/DSS/Enterprise).
+  - status: 503
+    title: Service Unavailable
+    meaning: PSM control plane temporarily unavailable (e.g. during rollout/upgrade).
+    remediation: Retry with backoff once the cluster is healthy.
+notes: >-
+  Status-code inventory (200, 400, 401, 409, 412, 500, 501, 503) is taken verbatim
+  from the first-party PSM API guide; titles and remediation are conventional
+  interpretations of the documented HTTP semantics. No public error-reference page
+  or per-error type URI is published.

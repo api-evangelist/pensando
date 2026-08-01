@@ -1,0 +1,34 @@
+# AMD Pensando
+
+> AMD Pensando (formerly Pensando Systems, acquired by AMD in 2022) builds programmable Distributed Services Cards (DPUs) and the Policy and Services Manager (PSM) control plane. PSM exposes a Kubernetes-style declarative REST API for managing clusters, networks, security policy, monitoring, and services across Cloud, Distributed Services Switch, and Enterprise deployments. The API is served per-appliance; first-party Python bindings and a Terraform provider consume it.
+
+## APIs
+
+- [AMD Pensando PSM REST API](https://github.com/pensando/pypi): Declarative control-plane REST API (Kind/Spec/Status object model, V1 surfaces) served from a running PSM appliance at https://<PSM-IP>/docs and https://<PSM-IP>/generated/swaggeruri.html.
+
+## Packages (first-party SDKs)
+
+- [pensando-cloud on PyPI](https://pypi.org/project/pensando-cloud/): Python bindings for the PSM Cloud distribution — `pip install pensando-cloud`.
+- [pensando-dss on PyPI](https://pypi.org/project/pensando-dss/): Python bindings for the PSM Distributed Services Switch distribution — `pip install pensando-dss`.
+- [pensando-ent on PyPI](https://pypi.org/project/pensando-ent/): Python bindings for the PSM Enterprise distribution — `pip install pensando-ent`.
+- [terraform-pensando](https://github.com/pensando/terraform-pensando): First-party Terraform provider (last updated 2020).
+
+## Docs
+
+- [PSM API guide (PSMAPI.md)](https://github.com/pensando/pypi/blob/main/docs/PSMAPI.md): Auth (token via PSM_USER/PSM_PASSWORD, stored in ~/.psm/config.json, 6-day validity), object model, HTTP status codes.
+- [pensando/pypi README](https://github.com/pensando/pypi/blob/main/README.md): Overview of the three distributions and generation from the PSM Swagger schema.
+
+## Repo artifacts (API Evangelist enrichment)
+
+- Packages: packages/pensando-packages.yml
+- Authentication: authentication/pensando-authentication.yml
+- Conventions: conventions/pensando-conventions.yml
+- Error catalog: errors/pensando-problem-types.yml
+- Lifecycle: lifecycle/pensando-lifecycle.yml
+- Data model: data-model/pensando-data-model.yml
+- Domain security: security/pensando-domain-security.yml
+
+## Notes
+
+- There is no publicly hosted OpenAPI/Swagger document — the schema is served only from a running PSM appliance.
+- Auth is scoped to a customer's own PSM deployment; there is no public multi-tenant OAuth surface.

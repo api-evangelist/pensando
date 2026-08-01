@@ -1,8 +1,15 @@
 aid: pensando
 name: Pensando *
-description: 'Pensando * is a company surfaced as a portfolio company of gv, lightspeed-venture-partners
-  and added to the API Evangelist network as a stub for enrichment. Sector: enterprise. This profile is
-  a lead awaiting the enrichment pipeline.'
+description: >-
+  AMD Pensando (formerly Pensando Systems, acquired by AMD in 2022) builds
+  programmable Distributed Services Cards (DPUs) and the Policy and Services
+  Manager (PSM) control plane that operates them across cloud, distributed
+  services switch, and enterprise deployments. PSM exposes a REST API — surfaced
+  through auto-generated, first-party Python bindings on PyPI (pensando-cloud,
+  pensando-dss, pensando-ent) and a Terraform provider — for managing clusters,
+  networks, security policy, and services on Pensando infrastructure. Originally
+  surfaced as a portfolio company of GV and Lightspeed Venture Partners and added
+  to the API Evangelist network for enrichment.
 url: https://raw.githubusercontent.com/api-evangelist/pensando/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,13 +18,57 @@ x-backed-by:
 - lightspeed-venture-partners
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://avatars.githubusercontent.com/u/24572811
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Enterprise
-apis: []
+- Networking
+- DPU
+- Infrastructure
+- Cloud
+- Security
+- AMD
+apis:
+- name: AMD Pensando Policy and Services Manager (PSM) REST API
+  description: >-
+    REST API for the AMD Pensando Policy and Services Manager control plane —
+    manage clusters, networks, security policy, and services on Pensando DPUs.
+    The API is served per-appliance; live interactive docs and the Swagger schema
+    are exposed by a running PSM deployment. First-party Python bindings and a
+    Terraform provider consume this API.
+  humanURL: https://github.com/pensando/pypi
+  image: https://avatars.githubusercontent.com/u/24572811
+  tags:
+  - PSM
+  - Networking
+  - Security
+  - DPU
+  properties:
+  - type: SourceCode
+    url: https://github.com/pensando/pypi
+  - type: Documentation
+    url: https://github.com/pensando/pypi/blob/main/docs/PSMAPI.md
+  - type: Packages
+    url: packages/pensando-packages.yml
+  - type: SDKs
+    url: packages/pensando-packages.yml
+  - type: Authentication
+    url: authentication/pensando-authentication.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,4 +76,29 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: http://pensando.io
+  url: https://amd.com/pensando
+- type: GitHubOrganization
+  url: https://github.com/pensando
+- type: SDKs
+  url: packages/pensando-packages.yml
+- type: Packages
+  url: packages/pensando-packages.yml
+- type: DomainSecurity
+  url: security/pensando-domain-security.yml
+- type: Authentication
+  url: authentication/pensando-authentication.yml
+- type: Conventions
+  url: conventions/pensando-conventions.yml
+- type: ErrorCatalog
+  url: errors/pensando-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/pensando-lifecycle.yml
+- type: DataModel
+  url: data-model/pensando-data-model.yml
+- type: LLMsTxt
+  url: llms/pensando-llms.txt
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 5
+  pass: local-v1

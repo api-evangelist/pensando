@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: github.com/pensando/pypi README + PSM Python SDK configuration module
+api: AMD Pensando Policy and Services Manager (PSM) REST API
+docs: https://github.com/pensando/pypi/blob/main/README.md
+summary: >-
+  The PSM REST API is authenticated per-appliance. The official Python bindings
+  authenticate via a local PSM credential/config file (~/.psm/config.json) that
+  carries the PSM endpoint and credentials; an interactive login mode is also
+  supported. TLS verification is configurable (verify_ssl) because PSM appliances
+  are commonly deployed with self-signed certificates. There is no public,
+  multi-tenant OAuth surface — auth is scoped to a customer's own PSM deployment.
+schemes:
+- type: appliance-credential
+  mechanism: local config file
+  detail: >-
+    Configuration(psm_config_path=~/.psm/config.json, interactive_mode=True);
+    credentials and PSM endpoint are read from the local config, or supplied
+    interactively at runtime.
+- type: tls
+  mechanism: https
+  detail: >-
+    All PSM API traffic is HTTPS. verify_ssl is configurable in the client to
+    accommodate self-signed appliance certificates.
+notes: >-
+  Auth details are documented via the SDK rather than a public hosted auth page;
+  the authoritative live docs are served from a running PSM instance at
+  https://<PSM-IP>/docs. No public OpenAPI/Swagger securitySchemes were available
+  to derive from, so no OAuth scopes artifact is emitted.
