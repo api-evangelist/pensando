@@ -117,3 +117,6 @@ x-enrichment:
   status: enriched
   artifacts_added: 5
   pass: local-v1
+x-parent: amd
+x-relationship: acquisition
+x-acquired: 2022
