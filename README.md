@@ -64,6 +64,85 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Pensando * is a company surfaced as a portfolio company of gv, lightspeed-venture-partners and added to the API Evangelist network as a stub for enrichment. Sector: enterprise. This profile is a lead awaiting the enrichment pipeline.
+AMD Pensando (formerly Pensando Systems, acquired by AMD in 2022) builds programmable Distributed Services Cards (DPUs) and the Policy and Services Manager (PSM) control plane that operates them across cloud, distributed services switch, and enterprise deployments. PSM exposes a REST API — surfaced through auto-generated, first-party Python bindings on PyPI (pensando-cloud, pensando-dss, pensando-ent) and a Terraform provider — for managing clusters, networks, security policy, and services on Pensando infrastructure. Originally surfaced as a portfolio company of GV and Lightspeed Venture Partners and added to the API Evangelist network for enrichment.
 
-Backed by: gv, lightspeed-venture-partners — http://pensando.io
+**Areas:** Company · Enterprise · Networking · DPU · Infrastructure · Cloud · Security · AMD
+
+## Pensando * on APIs.io
+
+Everything profiled for Pensando * is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/pensando/](https://apis.io/providers/pensando/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [AMD Pensando Policy and Services Manager (PSM) REST API](https://apis.io/apis/pensando/amd-pensando-policy-and-services-manager-psm-rest-api/) — REST API for the AMD Pensando Policy and Services Manager control plane — manage clusters, networks, security policy, and services on Pensando DPUs. The API…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Pensando Authentication](https://apis.io/security/pensando/pensando-authentication/)
+- [Pensando Domain Security](https://apis.io/security/pensando/pensando-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://amd.com/pensando)
+- [GitHub](https://github.com/pensando)
+
+## API Evangelist rating
+
+**Kin Score 14.0** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 0.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 0.0 |
+
+**Agent readiness 5.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/pensando/](https://apis.io/providers/pensando/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Pensando *: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/pensando/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
